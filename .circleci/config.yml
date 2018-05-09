@@ -1,0 +1,60 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.4
+        environment:
+          FLASK_CONFIG: testing
+          FLASK_APP: server
+      - image: postgres:9.6
+        environment:
+          - POSTGRES_USER: ubuntu
+          - POSTGRES_DB: test_db
+          - POSTGRES_PASSWORD: ""
+    environment:
+      - DATABASE_URL: "postgres://ubuntu@localhost:5432/test_db"
+    steps:
+      - checkout
+      - run:
+          name: Install python packages
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Lint python code
+          command: |
+            . venv/bin/activate
+            flake8 .
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Initialize test database
+          command: |
+            . venv/bin/activate
+            python -m flask db upgrade
+            python ./init_db.py '--runseed'
+      - run:
+          name: Python tests (py.test)
+          command: |
+            . venv/bin/activate
+            py.test --cov server
+      - run: bash .circleci/setup-heroku.sh
+      - add_ssh_keys:
+          fingerprints:
+            - $HEROKU_SSH_FINGERPRINT
+      - deploy:
+          name: Deploy/DB Migrate to Heroku if tests pass and branch is master
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              heroku git:remote -a $HEROKU_APP_NAME
+              git push --force heroku master
+              heroku run flask db upgrade
+              heroku run python ./init_db.py '--runseed'
+              heroku restart
+            fi

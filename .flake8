@@ -1,0 +1,13 @@
+[flake8]
+exclude=
+    .circleci,
+    .git,
+    .eggs,
+    .github,
+    venv,
+    server/migrations,
+    __init__.py
+max-line-length=120
+#max-complexity=15
+#show-source=True
+#statistics=True

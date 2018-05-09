@@ -1,0 +1,20 @@
+{
+  "categorys":[
+    {
+      "category_name": "A"
+    },
+    {
+      "category_name": "B"
+    }
+  ],
+  "sub_categorys":[
+    {
+      "category_id":1,
+      "sub_category_name":"A1"
+    },
+    {
+      "category_id":2,
+      "sub_category_name":"B1"
+    }
+  ]  
+}

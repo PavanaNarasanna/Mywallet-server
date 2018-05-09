@@ -1,0 +1,173 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TeamSserver",
+		"_postman_id": "9998dcd7-52ea-aca2-7bd8-dc5f7bf22ad5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://127.0.0.1:5000/auth\n ",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"ms.dhoni@example.com\", \"password\": \"password\" }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Claim - Segment Analiser",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:5000/analyse/segment?engine=static",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"analyse",
+						"segment"
+					],
+					"query": [
+						{
+							"key": "engine",
+							"value": "static\n ",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Claim Data",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/graphql?query=query {\nclaims (orderby:\"createdAt\") {\n  id\n  externalClaimId\n  insuredName\n  accidentType\n  initialReserveAmount\n  incurredAmount\n  currentReserveAmount\n  daysOpen\n  paidToDateAmount\n  daysToInitialContact\n  lossOccurrenceDate\n  liabilityPercentage\n  injuryOccurred\n  accidentType\n  hospitalizationRequired\n  adjuster {\n    id\n    firstName\n  }\n  coverageType {\n    id\n    name\n    abbreviation\n  }\n  lifecycleStage{\n    id\n    name\n  }\n  claimSegment{\n    id\n    name\n  }\n  lineOfBusiness {\n    id\n    name\n  }\n  coverageType {\n    id\n    name\n  }\n\n  state {\n    id\n    name\n  }\n\n  collisionPoint {\n    id\n    name\n  }\n  \n  claimNotes {\n    id\n    notes\n    createdAt\n    updatedAt\n  }\n  faultRating {\n    id\n    name\n  }\n  documents {\n    id\n    filename\n    documentType {\n      id\n      name\n    }\n  }\n}\n}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "query {\nclaims (orderby:\"createdAt\") {\n  id\n  externalClaimId\n  insuredName\n  accidentType\n  initialReserveAmount\n  incurredAmount\n  currentReserveAmount\n  daysOpen\n  paidToDateAmount\n  daysToInitialContact\n  lossOccurrenceDate\n  liabilityPercentage\n  injuryOccurred\n  accidentType\n  hospitalizationRequired\n  adjuster {\n    id\n    firstName\n  }\n  coverageType {\n    id\n    name\n    abbreviation\n  }\n  lifecycleStage{\n    id\n    name\n  }\n  claimSegment{\n    id\n    name\n  }\n  lineOfBusiness {\n    id\n    name\n  }\n  coverageType {\n    id\n    name\n  }\n\n  state {\n    id\n    name\n  }\n\n  collisionPoint {\n    id\n    name\n  }\n  \n  claimNotes {\n    id\n    notes\n    createdAt\n    updatedAt\n  }\n  faultRating {\n    id\n    name\n  }\n  documents {\n    id\n    filename\n    documentType {\n      id\n      name\n    }\n  }\n}\n}\n\n",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "To fetch claim details"
+			},
+			"response": []
+		},
+		{
+			"name": "Claim Data Single Row",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/graphql?query=query {\nclaims (id:\"1\") {\n  id\n  externalClaimId\n  insuredName\n  accidentType\n  initialReserveAmount\n  incurredAmount\n  currentReserveAmount\n  daysOpen\n  paidToDateAmount\n  daysToInitialContact\n  lossOccurrenceDate\n  liabilityPercentage\n  injuryOccurred\n  accidentType\n  hospitalizationRequired\n  adjuster {\n    id\n    firstName\n  }\n  coverageType {\n    id\n    name\n    abbreviation\n  }\n  lifecycleStage{\n    id\n    name\n  }\n  claimSegment{\n    id\n    name\n  }\n  lineOfBusiness {\n    id\n    name\n  }\n  coverageType {\n    id\n    name\n  }\n\n  state {\n    id\n    name\n  }\n\n  collisionPoint {\n    id\n    name\n  }\n  \n  claimNotes {\n    id\n    notes\n    createdAt\n    updatedAt\n  }\n  faultRating {\n    id\n    name\n  }\n  documents {\n    id\n    filename\n    documentType {\n      id\n      name\n    }\n  }\n}\n}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "query {\nclaims (id:\"1\") {\n  id\n  externalClaimId\n  insuredName\n  accidentType\n  initialReserveAmount\n  incurredAmount\n  currentReserveAmount\n  daysOpen\n  paidToDateAmount\n  daysToInitialContact\n  lossOccurrenceDate\n  liabilityPercentage\n  injuryOccurred\n  accidentType\n  hospitalizationRequired\n  adjuster {\n    id\n    firstName\n  }\n  coverageType {\n    id\n    name\n    abbreviation\n  }\n  lifecycleStage{\n    id\n    name\n  }\n  claimSegment{\n    id\n    name\n  }\n  lineOfBusiness {\n    id\n    name\n  }\n  coverageType {\n    id\n    name\n  }\n\n  state {\n    id\n    name\n  }\n\n  collisionPoint {\n    id\n    name\n  }\n  \n  claimNotes {\n    id\n    notes\n    createdAt\n    updatedAt\n  }\n  faultRating {\n    id\n    name\n  }\n  documents {\n    id\n    filename\n    documentType {\n      id\n      name\n    }\n  }\n}\n}\n\n",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Getme",
+			"request": {
+				"url": "http://localhost:5000/getme",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
