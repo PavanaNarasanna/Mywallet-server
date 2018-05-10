@@ -13,7 +13,7 @@ class User(Base):
     user_name = Column(String, nullable=True)
     password = Column(String, nullable=True)
     role = Column(String, nullable=True)
-    photo_url= Column(String, nullable=True)
+    email_id= Column(String, nullable=True)
     last_login = Column(DateTime,nullable=True)
     created_date = Column(DateTime, default=func.now(), nullable=True)
     updated_date = Column(DateTime, default=func.now(), nullable=True)

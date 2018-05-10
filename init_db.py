@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 import argparse
 from server.database import Base, engine
+from server.database import Users
 from server.database import Categorys
 from server.database import SeedData
 from server.database import Sub_Categorys
-from server.database import Users
+
 
 def run(drop=True, run_seed=False):
     if drop:
@@ -12,10 +13,10 @@ def run(drop=True, run_seed=False):
         Base.metadata.drop_all(bind=engine)
 
     Base.metadata.create_all(bind=engine, checkfirst=True)
+    user = Users()
     category = Categorys()
     seed_data = SeedData()
     sub_category = Sub_Categorys()
-    user = Users()
 
     if run_seed:
         print('Seeding started for user...')

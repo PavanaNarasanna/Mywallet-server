@@ -14,7 +14,7 @@ class Users:
                     user_name=user_data["user_name"],
                     password=user_data["password"],
                     role=user_data["role"],
-                    photo_url=user_data["photo_url"],
+                    email_id=user_data["email_id"],
                     last_login=user_data["last_login"],
                     created_by_id=user_data["created_by_id"],
                     updated_by_id=user_data["updated_by_id"])
