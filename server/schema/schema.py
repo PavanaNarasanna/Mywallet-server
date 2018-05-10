@@ -9,6 +9,8 @@ from .sub_category_schema import (resolve_sub_category as resolve_sub_category_f
 from .expense_mutate_schema import ManageExpense
 from .expense_schema import Expense
 from .expense_schema import (resolve_expense as resolve_expense_from_expense_schema)
+from .user_schema import (resolve_user as resolve_user_from_user_schema)
+from .user_schema import User
 
 
 class Mutation(graphene.ObjectType):
@@ -20,6 +22,7 @@ class Query(graphene.ObjectType):
     category = graphene.List(Category)
     expense = graphene.List(Expense)
     subcategory = graphene.List(Sub_Category)
+    user = graphene.List(User)
 
     def resolve_category(self, info):
         return resolve_category_from_category_schema(info)
@@ -29,6 +32,9 @@ class Query(graphene.ObjectType):
 
     def resolve_subcategory(self, info):
         return resolve_sub_category_from_sub_category_schema(info)
+
+    def resolve_user(self, info):
+        return resolve_user_from_user_schema(info)
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)

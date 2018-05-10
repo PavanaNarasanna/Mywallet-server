@@ -4,7 +4,7 @@ from server.database import Base, engine
 from server.database import Categorys
 from server.database import SeedData
 from server.database import Sub_Categorys
-
+from server.database import Users
 
 def run(drop=True, run_seed=False):
     if drop:
@@ -15,15 +15,15 @@ def run(drop=True, run_seed=False):
     category = Categorys()
     seed_data = SeedData()
     sub_category = Sub_Categorys()
-
+    user = Users()
 
     if run_seed:
+        print('Seeding started for user...')
+        user.init_table(seed_data.users())
         print('Seeding started for category...')
         category.init_table(seed_data.categorys())
         print('Seeding started for sub_category...')
         sub_category.init_table(seed_data.sub_categorys())
-  
-      
 
 
 parser = argparse.ArgumentParser(description="""

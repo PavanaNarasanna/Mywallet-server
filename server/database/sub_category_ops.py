@@ -10,14 +10,16 @@ class Sub_Categorys:
             if sub_category is None:
                sub_category = Sub_CategoryModel(
                       category_id=SubCategory_data["category_id"],
-                      sub_category_name=SubCategory_data["sub_category_name"])
+                      sub_category_name=SubCategory_data["sub_category_name"],
+                      user_id=SubCategory_data["user_id"])
                db_session.add(sub_category)
             db_session.commit()
 
     def insert_subcategory(self, subcategory):
         subcategory = Sub_CategoryModel(
             category_id=subcategory.category_id,
-            sub_category_name=subcategory.sub_category_name)
+            sub_category_name=subcategory.sub_category_name,
+            user_id=subcategory.user_id)
         db_session.add(subcategory)
         db_session.commit() 
         return subcategory

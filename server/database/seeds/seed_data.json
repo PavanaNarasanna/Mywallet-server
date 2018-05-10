@@ -1,20 +1,35 @@
 {
   "categorys":[
     {
-      "category_name": "A"
+      "category_name": "Grocery"
     },
     {
-      "category_name": "B"
+      "category_name": "Clothing"
     }
   ],
   "sub_categorys":[
     {
       "category_id":1,
-      "sub_category_name":"A1"
+      "sub_category_name":"Cooking oil",
+      "user_id":1
     },
     {
       "category_id":2,
-      "sub_category_name":"B1"
+      "sub_category_name":"Ethnic Wear",
+      "user_id":1
+    }
+  ],
+  "users":[
+    {
+      "first_name":"Pavana",
+      "last_name":"Narasanna",
+      "user_name":"PavanaSn",
+      "password":"pavana123",
+      "role":"Admin",
+      "photo_url":"Pavana.jpg",
+      "last_login":"2018-03-12 18:26:06.670835",
+      "created_by_id":1,
+      "updated_by_id":1
     }
   ]  
 }

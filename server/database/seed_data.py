@@ -15,3 +15,6 @@ class SeedData:
 
     def sub_categorys(self):
         return self.data["sub_categorys"]
+
+    def users(self):
+        return self.data["users"]

@@ -9,15 +9,16 @@ class Categorys:
                 CategoryModel.category_name == category_data["category_name"])).one_or_none()
             if category is None:
                 category = CategoryModel(
-                         category_name=category_data["category_name"])
+                         category_name=category_data["category_name"],
+                         user_id=category_data["user_id"])
                 db_session.add(category)
             db_session.commit()
 
     def insert_category(self, category):
         category = CategoryModel(
                         category_name=category.category_name,
+                        user_id=category.user_id
                         )
-
         db_session.add(category)
         db_session.commit()
         return category

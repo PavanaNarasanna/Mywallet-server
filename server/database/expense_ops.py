@@ -10,7 +10,8 @@ class Expenses:
             unit=expense.unit,
             quantity=expense.quantity,
             provider=expense.provider,
-            price=expense.price
+            price=expense.price,
+            user_id=expense.user_id
         )
 
         db_session.add(expense)
