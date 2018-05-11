@@ -10,8 +10,7 @@ from server.database.database import Base, db_session
 from .config import Config
 from server.schema import schema
 from server.config import Config
-from .amazonS3 import get_file_from_s3
-# from server.ml_analyser_engine import process_chart
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super-secret'
