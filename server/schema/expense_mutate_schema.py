@@ -10,7 +10,8 @@ class ExpenseInput(graphene.InputObjectType):
     quantity=graphene.String()
     provider=graphene.String()
     price=graphene.String()
-    
+    category_id=graphene.Int()
+    user_id=graphene.Int()
 
 class ManageExpense(graphene.Mutation):
     class Arguments:
@@ -26,7 +27,9 @@ class ManageExpense(graphene.Mutation):
             unit=expense_data.unit,
             quantity=expense_data.quantity,
             provider=expense_data.provider,
-            price=expense_data.price
+            price=expense_data.price,
+            category_id=expense_data.category_id,
+            user_id=expense_data.user_id
         )
         create = Expenses()
         expenses = create.insert_expense(expense)

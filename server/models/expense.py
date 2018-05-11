@@ -26,6 +26,21 @@ class Expense(Base):
             cascade='delete,all'
         )
     )
+    category_id = Column(
+        Integer,
+        ForeignKey(
+            'categorys.id',
+            name="CATEGORY"),
+        nullable=True)
+    CATEGORY=relationship(
+        Category,
+        foreign_keys='Expense.category_id',
+        backref=backref(
+            'expenses',
+            uselist=True,
+            cascade='delete,all'
+        )
+    )
     item= Column(Text, nullable=True)
     unit= Column(Text, nullable=True)
     quantity= Column(Integer, nullable=True)

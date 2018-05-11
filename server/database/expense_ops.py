@@ -11,6 +11,7 @@ class Expenses:
             quantity=expense.quantity,
             provider=expense.provider,
             price=expense.price,
+            category_id=expense.category_id,
             user_id=expense.user_id
         )
 

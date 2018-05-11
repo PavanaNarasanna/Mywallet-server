@@ -40,5 +40,4 @@ class Sub_Category(Base):
             cascade='delete,all'
         )
     )
-    # dfjasdfjk
     created_at = Column(DateTime, default=func.now(), nullable=True)
