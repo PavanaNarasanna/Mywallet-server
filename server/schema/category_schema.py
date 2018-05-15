@@ -8,6 +8,8 @@ class Category(SQLAlchemyObjectType):
 
 def resolve_category(info, user_id= None):
     query = Category.get_query(info)
-    if id:
+    if user_id:
         query = query.filter(CategoryModel.user_id == user_id)
+    else:
+        query = query.filter(CategoryModel.user_id == None)
     return query.all()

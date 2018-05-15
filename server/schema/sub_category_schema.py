@@ -8,7 +8,9 @@ class Sub_Category(SQLAlchemyObjectType):
 
 def resolve_sub_category(info, category_id = None, user_id = None):
     query = Sub_Category.get_query(info)
-    if category_id:
-        query = query.filter(Sub_CategoryModel.category_id == category_id)
+    if category_id and user_id:
+        query = query.filter(Sub_CategoryModel.category_id == category_id , Sub_CategoryModel.user_id == user_id)
+    else:
+        query = query.filter(Sub_CategoryModel.user_id == None)
     return query.all()
 

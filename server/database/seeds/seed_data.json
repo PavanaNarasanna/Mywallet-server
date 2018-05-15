@@ -2,10 +2,18 @@
   "categorys":[
     {
       "category_name": "Grocery",
-      "user_id":1
+      "user_id":null
     },
     {
       "category_name": "Clothing",
+      "user_id":null
+    },
+    {
+      "category_name": "Electronics",
+      "user_id":null
+    },
+    {
+      "category_name": "Toys",
       "user_id":1
     }
   ],
@@ -13,11 +21,31 @@
     {
       "category_id":1,
       "sub_category_name":"Cooking oil",
+      "user_id":null
+    },
+    {
+      "category_id":1,
+      "sub_category_name":"Dal",
       "user_id":1
     },
     {
       "category_id":2,
       "sub_category_name":"Ethnic Wear",
+      "user_id":null
+    },
+    {
+      "category_id":2,
+      "sub_category_name":"Western Wear",
+      "user_id":1
+    },
+    {
+      "category_id":3,
+      "sub_category_name":"Mobile",
+      "user_id":null
+    },
+    {
+      "category_id":3,
+      "sub_category_name":"Induction Stove",
       "user_id":1
     }
   ],
