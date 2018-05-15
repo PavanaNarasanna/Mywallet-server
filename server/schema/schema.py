@@ -20,15 +20,15 @@ class Mutation(graphene.ObjectType):
 
 class Query(graphene.ObjectType):
     category = graphene.List(Category,user_id=graphene.Int())
-    expense = graphene.List(Expense)
+    expense = graphene.List(Expense,user_id=graphene.Int())
     subcategory = graphene.List(Sub_Category,category_id=graphene.Int(), user_id=graphene.Int() )
     user = graphene.List(User)
 
     def resolve_category(self, info, user_id=None):
         return resolve_category_from_category_schema(info, user_id)
 
-    def resolve_expense(self, info):
-        return resolve_expense_from_expense_schema(info)
+    def resolve_expense(self, info, user_id=None):
+        return resolve_expense_from_expense_schema(info, user_id)
 
     def resolve_subcategory(self, info, category_id = None, user_id = None):
         return resolve_sub_category_from_sub_category_schema(info, category_id, user_id)
