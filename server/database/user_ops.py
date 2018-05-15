@@ -3,6 +3,17 @@ from server.models.user import (User as UserModel)
 
 
 class Users:
+    def authenticate(self, email_id, password):
+        user = db_session.query(UserModel).filter((UserModel.email_id == email_id)).one_or_none()
+
+        if user and user.password == password:
+            return user
+        return None
+
+    def identity(self, payload):
+        email_id = payload['identity']
+        return db_session.query(UserModel).filter(UserModel.email_id == email_id).one_or_none()
+
     def init_table(self, users):
         for user_data in users:
             user = db_session.query(UserModel).filter((

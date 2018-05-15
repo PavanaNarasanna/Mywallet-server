@@ -6,8 +6,6 @@ from sqlalchemy.orm import configure_mappers
 
 from server.config import Config
 
-make_searchable()
-
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI, convert_unicode=True)
 configure_mappers()
 db_session = scoped_session(sessionmaker(autocommit=False,
