@@ -57,6 +57,7 @@ def getme():
         firstName=current_identity.first_name,
         lastName=current_identity.last_name,
         email_id=current_identity.email_id,
+        role=current_identity.role,
     )
 
 

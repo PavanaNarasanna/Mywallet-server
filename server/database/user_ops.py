@@ -5,8 +5,9 @@ from server.models.user import (User as UserModel)
 class Users:
     def authenticate(self, email_id, password):
         user = db_session.query(UserModel).filter((UserModel.email_id == email_id)).one_or_none()
-
+        print('Here')
         if user and user.password == password:
+            print('Login')
             return user
         return None
 
