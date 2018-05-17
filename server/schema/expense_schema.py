@@ -24,3 +24,10 @@ def update_expense(info, id=None, sub_category_id=None, item=None, unit=None,qua
         db_session.commit()
     query = query.filter(ExpenseModel.id == id)
     return query.first()
+
+def delete_expense(info, id=None):
+    query = Expense.get_query(info)
+    if id:
+        record = query.filter(ExpenseModel.id == id).one()
+        db_session.delete(record)
+        db_session.commit()

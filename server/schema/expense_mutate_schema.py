@@ -1,5 +1,5 @@
 import graphene
-from .expense_schema import Expense, update_expense
+from .expense_schema import Expense, update_expense, delete_expense
 from server.database.expense_ops import Expenses
 
 
@@ -13,6 +13,7 @@ class ExpenseInput(graphene.InputObjectType):
     price=graphene.String()
     category_id=graphene.Int()
     user_id=graphene.Int()
+    flag=graphene.String()
 
 class ManageExpense(graphene.Mutation):
     class Arguments:
@@ -37,6 +38,9 @@ class ManageExpense(graphene.Mutation):
             create = Expenses()
             expenses = create.insert_expense(expense)
             return ManageExpense(expense=expenses)
+        elif expense_data.flag is not None:
+            expense_delete = delete_expense( info , id=expense_data.id)
+            return ManageExpense(expense=expense_delete)
         else:
             expense_edit = update_expense(  info,
                                             id=expense_data.id,
